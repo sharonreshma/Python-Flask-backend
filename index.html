@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #e3f2fd; /* Change background color here */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold; /* Make labels bold */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="form-container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+
+            <!-- Text Field -->
+            <div class="form-group">
+                <label for="exampleInputText">Full Name</label>
+                <input type="text" class="form-control" id="exampleInputText" placeholder="Enter text">
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="emailInput">Email address</label>
+                <input type="email" class="form-control" id="emailInput" placeholder="Enter email" required>
+                <div class="invalid-feedback">
+                    Please enter a valid email address.
+                </div>
+            </div>
+
+            <!-- Radio Buttons -->
+            <div class="form-group">
+                <label>Gender</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                    <label class="form-check-label" for="inlineRadio3">Other</label>
+                </div>
+            </div>
+
+            <!-- Dropdown -->
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Country</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>India</option>
+                    <option>USA</option>
+                    <option>UK</option>
+                    <option>Japan</option>
+                    <option>Russia</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        var emailInput = document.getElementById('emailInput');
+        if (!emailInput.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+            emailInput.classList.add('is-invalid');
+        } else {
+            emailInput.classList.remove('is-invalid');
+            emailInput.classList.add('is-valid');
+        }
+    });
+</script>
+</body>
+</html>
